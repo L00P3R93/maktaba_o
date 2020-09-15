@@ -1,2 +1,2 @@
 # maktaba
-Library Management System
+Library Management System - v 1.0.0
