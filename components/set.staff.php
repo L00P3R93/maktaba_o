@@ -2,7 +2,7 @@
     if($_POST){
         require '../includes/conn.php';
         require '../includes/data.php';
-        $userid = encurl($_REQUEST['id']);
+        $userid = decurl($_REQUEST['id']);
         $r = getOneRow('l_staff',"id='$userid'");
         if($userid>0){ ?>
             <div class="col-md-6">

@@ -7,8 +7,8 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-        <div class="input-group input-group-sm search" style="width: 500px  !important;">
+    <form class="form-inline ml-2">
+        <div class="input-group input-group-sm search">
             <input class="form-control form-control-navbar searchform" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
                 <button class="btn btn-navbar" type="submit">

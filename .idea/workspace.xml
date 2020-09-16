@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="81c2c69c-4051-470d-bfa0-fea9a2d7e31e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/site.webmanifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/borrowed.php" beforeDir="false" afterPath="$PROJECT_DIR$/borrowed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/login-process.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/login-process.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/set.staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/set.staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/base/css.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/css.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/nav/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/data.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +81,7 @@
       <workItem from="1600157303805" duration="469000" />
       <workItem from="1600164607169" duration="477000" />
       <workItem from="1600165540790" duration="15714000" />
-      <workItem from="1600232755515" duration="9104000" />
+      <workItem from="1600232755515" duration="13736000" />
     </task>
     <servers />
   </component>

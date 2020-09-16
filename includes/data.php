@@ -411,8 +411,8 @@
 
     function getNames($id){
         $id = decurl($id);
-        $user = getOneRow('l_staff',"id='$id'","f_name, l_name");
-        return $user['f_name'].", ".$user['l_name'];
+        $user = getOneRow('l_staff',"id='$id'","username");
+        return $user['username'];
     }
 
     function getTotal($table, $condition, $cols){

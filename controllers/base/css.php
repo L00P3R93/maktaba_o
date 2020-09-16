@@ -32,6 +32,43 @@
 
 
 <style>
+    .search{
+        width: 500px;
+    }
+    @media(min-width: 300px){
+        .search{
+            width: 126px !important;
+        }
+    }
+    @media(min-width: 400px){
+        .search{
+            width: 200px !important;
+        }
+    }
+
+    @media (min-width: 576px) {
+        .search {
+            width: 350px !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .search {
+            width: 500px !important;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .search {
+            width: 500px !important;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .search {
+            max-width: 500px !important;
+        }
+    }
     .avatar{border-radius: 50%;}
 
     /*.search input:focus + .results { display: block }*/
