@@ -19,7 +19,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="home?a=d">Home</a></li>
                             <li class="breadcrumb-item active">Students</li>
                         </ol>
                     </div><!-- /.col -->
@@ -36,10 +36,11 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Student</h3>
+                                <a href="add?a=nsu&t=stud" class="btn btn-primary ml-5"><i class="fas fa-plus-circle"></i> New Student</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-responsive table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>Name</th>
@@ -59,7 +60,12 @@
                                             <td><?php echo getClass($sts->class); ?></td>
                                             <td><?php echo getStatus($sts->status); ?></td>
                                             <td>
-                                                <button class="btn btn-outline-primary"><i class="fas fa-eye"></i></button>
+                                                <div class="btn-group" role="group" aria-label="Action Buttons">
+                                                    <button class="btn btn-primary studentView" data-toggle="modal" data-target="#modal-view" value="<?php echo encurl($sts->id); ?>"><i class="fas fa-eye"></i></button>
+                                                    <a href="add?a=nsu&t=stud&id=<?php echo encurl($sts->id); ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                                    <button class="btn btn-danger studentDelete" value="<?php echo encurl($sts->id); ?>"><i class="fas fa-trash-alt"></i></button>
+                                                </div>
+                                                <input type="hidden" name="studname<?php echo encurl($sts->id); ?>" id="studname<?php echo encurl($sts->id); ?>" value="<?php echo $sts->f_name." ".$sts->m_name." ".$sts->l_name; ?>">
                                             </td>
                                         </tr>
                                 <?php } ?>
@@ -90,11 +96,30 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+    <!-- Modal View -->
+    <div class="modal fade" id="modal-view">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Student Profile</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="setStudent" class="row"></div>
+                    <div class="processing"></div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-primary saveStaff" value="SAVE_CATEGORY">Save changes</button>-->
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
 
     <!-- Main Footer -->
     <?php include 'controllers/base/footer.php'; ?>
@@ -102,5 +127,54 @@
 <!-- ./wrapper -->
 
 <?php include 'controllers/base/js.php'; ?>
+<script>
+    function action(actionPage, params, feedbackArea='.feedback', processingArea='.processing', processingMessage='Processing'){
+        var ico = '<img src="assets/img/loader.gif" title="'+processingMessage+'" height="22px" alt="IMG_PROCESS"/>';
+        console.log(params);
+        $.ajax({
+            method: "POST",
+            url: actionPage,
+            data: params,
+            beforeSend: function(){
+                $(processingArea).html(ico + processingMessage);
+                $(processingArea).show();
+            },
+            complete: function(){$(processingArea).hide();},
+            success: function(data){$(feedbackArea).html(data);},
+            error: function(){$(feedbackArea).html('Oops! Something went wrong');}
+        });
+    }
+
+    $('.studentView').click(function(){
+        var studentid = $(this).val();
+        var params = "studid="+studentid;
+        action('components/set.student.php',params,"#setStudent");
+    });
+
+    $('.studentDelete').click(function(){
+        var studentid = $(this).val();
+        var nm = $("#studname"+studentid).val();
+        bootbox.confirm({
+            message: "Are you sure you would like to Delete <strong>"+nm+"</strong>?",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result == 1){
+                    var params = "studid="+studentid;
+                    console.log(params);
+                    action('components/delete_student.php',params);
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>

@@ -43,22 +43,17 @@
         $("#return").datepicker({
             dateFormat: "yy-mm-dd"
         });
-
-
         //Initialize Select2 Elements
         $('.select2').select2();
-
         //Initialize Select2 Elements
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         });
-
+        //Initialize Datatables
         $("#example1").DataTable({
-            "responsive": true,
+            "responsive": false,
             "autoWidth": true,
         });
-
-
         $('#example2').DataTable({
             "paging": true,
             "lengthChange": false,
@@ -68,21 +63,20 @@
             "autoWidth": false,
             "responsive": true,
         });
-
+        //Initial alert Toasts
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
             timer: 9000
         });
-
         $('.test').click(function() {
             Toast.fire({
                 icon: 'success',
                 title: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr.'
             })
         });
-
+        //Ajax Function
         function action(actionPage, params, feedbackArea='.feedback', processingArea='.processing', processingMessage='Processing'){
             var ico = '<img src="assets/img/loader.gif" title="'+processingMessage+'" height="22px" alt="IMG_PROCESS"/>';
             console.log(params);
@@ -140,6 +134,7 @@
                 $('#email').addClass('is-invalid');
             }
         });
+
         function validate_group($group){
             var group = $('#group :selected').val();
             if(group == ""){return false;}
@@ -150,7 +145,7 @@
             var $this = $(this);
             console.log($this.val());
             var sid = $("#sid").val();
-            //var uid = $("#uid").val();
+            var uid = $("#uid").val();
             var f_name = $("#f_name").val();
             var l_name = $("#l_name").val();
             var username = $("#username").val();
@@ -161,7 +156,7 @@
             var status = $("#stat2 :selected").val();
 
             if(validate_email(email) && validate_phone(phone)){
-                var params = "sid="+sid+"&f_name="+f_name+"&l_name="+l_name+"&username="+username+"&email="+email+"&phone="+phone+"&id_no="+id_no+"&group="+group+"&status="+status;
+                var params = "sid="+sid+"&f_name="+f_name+"&l_name="+l_name+"&username="+username+"&email="+email+"&phone="+phone+"&id_no="+id_no+"&group="+group+"&status="+status+"&uid="+uid;
                 console.log(params);
                 action('components/save_staff.php',params);
             }else{}
@@ -171,7 +166,7 @@
             var $this = $(this);
             console.log($this.val());
             var sid = $("#sid").val();
-            //var studid = $("#studid").val();
+            var studid = $("#studid").val();
             var f_name = $("#f_name").val();
             var m_name = $("#m_name").val();
             var l_name = $("#l_name").val();
@@ -179,7 +174,7 @@
             var _class = $("#class :selected").val();
             var status = $("#stat1 :selected").val();
 
-            var params = "sid="+sid+"&f_name="+f_name+"&m_name="+m_name+"&l_name="+l_name+"&adm_no="+adm_no+"&class="+_class+"&status="+status;
+            var params = "sid="+sid+"&f_name="+f_name+"&m_name="+m_name+"&l_name="+l_name+"&adm_no="+adm_no+"&class="+_class+"&status="+status+"&studid="+studid;
             console.log(params);
             action('components/save_student.php',params);
         });
@@ -188,7 +183,7 @@
             var $this = $(this)
             console.log($this.val());
             var sid = $("#sid").val();
-            //var bookid = $("#bookid").val();
+            var bookid = $("#bookid").val();
             var title = $("#title").val();
             var author = $("#author").val();
             var isbn = $("#isbn").val();
@@ -197,7 +192,7 @@
             var category = $("#category :selected").val();
             var status = $("#stat3 :selected").val();
 
-            var params = "sid="+sid+"&title="+title+"&author="+author+"&isbn="+isbn+"&books="+books+"&publisher="+publisher+"&category="+category+"&status="+status;
+            var params = "sid="+sid+"&title="+title+"&author="+author+"&isbn="+isbn+"&books="+books+"&publisher="+publisher+"&category="+category+"&status="+status+"&bookid="+bookid;
             console.log(params);
             action('components/save_book.php',params);
         });
@@ -212,8 +207,7 @@
                 action('components/save_category.php',params);
             }else{toastr.error('Category Name Cannot be Empty');}
         });
-
-
+        //Search Functions
         $(document).ready(function() {
             $('#student').bind("keyup click", function(e){
                 e.preventDefault();
@@ -224,9 +218,22 @@
                 else{
                     if (value.length>0) {
                         console.log(value);
-                        searchData(value);
+                        searchData('components/search_student.php',value);
                     }
                     else {$('.results').hide();}
+                }
+            });
+
+            $(".searchform").bind("keyup click", function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                var searchVal = $(this).val();
+                if(searchVal==""){}
+                else{
+                    if(searchVal.length>3){
+                        console.log(searchVal);
+                        searchData('components/search.php',searchVal);
+                    }
                 }
             });
         });
@@ -237,10 +244,10 @@
 
         $("#student").click(function (e){});
 
-        function searchData(val){
+        function searchData(actionPage,val){
             $('.results').show();
             $('.results').html('<div><img src="assets/img/loader.gif" width="22px;" height="22px"> <span style="font-size: 20px;">Please Wait...</span></div>');
-            $.post('components/search_student.php', {'student': val}, function(data){
+            $.post(actionPage, {'val': val}, function(data){
                 if(data != "")
                     $('.results').html(data);
                 else

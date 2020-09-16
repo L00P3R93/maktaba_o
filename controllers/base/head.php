@@ -9,5 +9,5 @@
     include 'controllers/base/meta.php';
     include 'controllers/base/css.php';
 ?>
-    <title><?php echo getPage($_GET['a']) ?> | Dashboard </title>
+    <title><?php echo getPage($_GET['a']) ?> | Maktaba </title>
 </head>

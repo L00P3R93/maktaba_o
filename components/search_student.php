@@ -3,7 +3,7 @@
         require '../includes/conn.php';
         require '../includes/data.php';
 
-        $searchVal = $_REQUEST['student'];
+        $searchVal = $_REQUEST['val'];
         $condition = "f_name LIKE '%$searchVal%' OR m_name LIKE '%$searchVal%' OR l_name LIKE '%$searchVal%' OR adm_no LIKE '%$searchVal%' OR username LIKE '%$searchVal%'";
         $searchData = searchTable('l_student', $condition);
         $searchRows = mysqli_num_rows($searchData);

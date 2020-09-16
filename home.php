@@ -19,7 +19,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="home?a=d">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </div><!-- /.col -->
@@ -38,8 +38,8 @@
                             <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Returns</span>
-                                <span class="info-box-number">0<small>%</small></span>
+                                <span class="info-box-text">Staff</span>
+                                <span class="info-box-number"><?php echo getCount('l_staff',"status='1'"); ?></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -51,8 +51,8 @@
                             <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Borrowed</span>
-                                <span class="info-box-number">0</span>
+                                <span class="info-box-text">Students</span>
+                                <span class="info-box-number"><?php echo getCount('l_student',"status='1'"); ?></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -68,8 +68,8 @@
                             <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                             <div class="info-box-content">
-                                <span class="info-box-text">Fines</span>
-                                <span class="info-box-number">0</span>
+                                <span class="info-box-text">Borrowed</span>
+                                <span class="info-box-number"><?php echo getCount('l_borrowed',"borrow_status='1'"); ?></span>
                             </div>
                             <!-- /.info-box-content -->
                         </div>
@@ -94,13 +94,13 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="card collapsed-card">
                             <div class="card-header">
                                 <h5 class="card-title">Monthly Recap Report</h5>
 
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
+                                        <i class="fas fa-plus"></i>
                                     </button>
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-tool dropdown-toggle" data-toggle="dropdown">

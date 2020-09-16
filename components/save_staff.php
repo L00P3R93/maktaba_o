@@ -5,7 +5,7 @@
     if($_POST){
 
         $sid = decurl($_REQUEST["sid"]);
-        $uid = 0;
+        $uid = decurl($_REQUEST["uid"]);
         $f_name = $_REQUEST['f_name'];
         $l_name = $_REQUEST['l_name'];
         $username = $_REQUEST['username'];
@@ -30,8 +30,26 @@
         if($status>0){$statusOk=1;}else{$statusOk=0; $error='User Status Needed';}
         $validated = $fNameOk+$lNameOk+$emailOk+$phoneOk+$groupOk+$statusOk;
         if($validated == 6){
-            if($uid>0){/*Update*/}
-            else{
+            if($uid>0){
+                $updateString = "f_name='$f_name',l_name='$l_name',email='$email',phone='$phone',id_no='$id_no',username='$username',user_group='$group',status='$status',added_by='$sid'";
+                $update = updateDb('l_staff',$updateString,"id='$uid'");
+                if($update == 1){
+                    $proceed = 1;
+                    echo "
+                            <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
+                            <script>
+                                toastr.success('User Updated Succesfully');
+                            </script>";
+                    echo success("User Updated Succesfully");
+                }else{
+                    echo "
+                        <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
+                        <script>
+                            toastr.error('Unable to Update User!')
+                        </script>";
+                    echo error("Unable to Update User!");
+                }
+            }else{
                 $epass = passencrypt($password);
                 $hash = substr($epass, 0, 64);
                 $salt = substr($epass, 64, 96);

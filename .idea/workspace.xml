@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="81c2c69c-4051-470d-bfa0-fea9a2d7e31e" name="Default Changelist" comment="" />
+    <list default="true" id="81c2c69c-4051-470d-bfa0-fea9a2d7e31e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/credit/american-express.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/credit/cirrus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/credit/mastercard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/credit/mestro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/credit/paypal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/credit/paypal2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/img/credit/visa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/books.php" beforeDir="false" afterPath="$PROJECT_DIR$/books.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/delete_book.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/delete_book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_book.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/search_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/search_student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/base/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/head.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/base/js.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/js.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/base/meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/meta.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/nav/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/nav/side.nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/side.nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/students.php" beforeDir="false" afterPath="$PROJECT_DIR$/students.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +44,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/thingengineer/mysqli-database-class" />
@@ -29,6 +58,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
@@ -68,6 +98,8 @@
       <workItem from="1599896243381" duration="7349000" />
       <workItem from="1600157303805" duration="469000" />
       <workItem from="1600164607169" duration="477000" />
+      <workItem from="1600165540790" duration="15714000" />
+      <workItem from="1600232755515" duration="8842000" />
     </task>
     <servers />
   </component>
@@ -79,14 +111,18 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1599550042593" />
-    <state x="176" y="292" key="NewPhpFileDialog" timestamp="1599899780746">
+    <state x="176" y="292" key="NewPhpFileDialog" timestamp="1600240983802">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="176" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1599899780746" />
+    <state x="176" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1600240983802" />
     <state x="676" y="0" width="697" height="745" key="dock-window-1" timestamp="1599340340605">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="676" y="0" width="697" height="745" key="dock-window-1/0.0.1366.738@0.0.1366.738" timestamp="1599340340605" />
+    <state x="344" y="181" key="run.anything.popup" timestamp="1600241739179">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="344" y="181" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1600241739179" />
     <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1599739006527">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

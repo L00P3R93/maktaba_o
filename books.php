@@ -17,7 +17,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="home?a=d">Home</a></li>
                             <li class="breadcrumb-item active">Books</li>
                         </ol>
                     </div><!-- /.col -->
@@ -34,11 +34,11 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Book </h3>
-                                <button class="btn btn-primary ml-5" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus-circle"></i> New Book</button>
+                                <a href="add?a=nb&t=book" class="btn btn-primary ml-5"><i class="fas fa-plus-circle"></i> New Book</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-responsive table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -65,22 +65,22 @@
                                             <td><?php echo getValue('l_category',"id=$sts->category",'name'); ?></td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Action">
-                                                    <button class="btn btn-primary bookView" data-toggle="modal" data-target="#modal-lg" value="<?php echo $sts->id ?>"><i class="fas fa-eye"></i></button>
-                                                    <button class="btn btn-secondary bookEdit" data-toggle="modal" data-target="#modal-lg" value="<?php echo $sts->id ?>"><i class="fas fa-edit"></i></button>
-                                                    <button class="btn btn-danger bookDelete" value="<?php echo $sts->id; ?>" ><i class="fas fa-trash-alt"></i></button>
+                                                    <button class="btn btn-primary bookView" data-toggle="modal" data-target="#modal-view" value="<?php echo encurl($sts->id); ?>"><i class="fas fa-eye"></i></button>
+                                                    <a href="add?a=nb&t=book&id=<?php echo encurl($sts->id); ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                                    <button class="btn btn-danger bookDelete" value="<?php echo encurl($sts->id); ?>" ><i class="fas fa-trash-alt"></i></button>
 
-                                                    <input type="hidden" id="bookTitle" name="bookTitle" value="<?php echo $sts->title ?>">
-                                                    <input type="hidden" id="bookAuthor" name="bookAuthor" value="<?php echo $sts->author ?>">
-                                                    <input type="hidden" id="bookIsbn" name="bookIsbn" value="<?php echo $sts->isbn ?>">
-                                                    <input type="hidden" id="bookPublisher" name="bookPublisher" value="<?php echo $sts->publisher_name; ?>">
-                                                    <input type="hidden" id="bookCategory" name="bookCategory" value="<?php echo $sts->category ?>">
-                                                    <input type="hidden" id="bookStatus" name="bookStatus" value="<?php echo $sts->status ?>">
-                                                    <input type="hidden" id="bookCopies" name="bookCopies" value="<?php echo $sts->books ?>">
+                                                    <input type="hidden" id="bookTitle<?php echo encurl($sts->id); ?>" name="bookTitle<?php echo encurl($sts->id); ?>" value="<?php echo $sts->title ?>">
+                                                    <input type="hidden" id="bookAuthor<?php echo encurl($sts->id); ?>" name="bookAuthor<?php echo encurl($sts->id); ?>" value="<?php echo $sts->author ?>">
+                                                    <input type="hidden" id="bookIsbn<?php echo encurl($sts->id); ?>" name="bookIsbn<?php echo encurl($sts->id); ?>" value="<?php echo $sts->isbn ?>">
+                                                    <input type="hidden" id="bookPublisher<?php echo encurl($sts->id); ?>" name="bookPublisher<?php echo encurl($sts->id); ?>" value="<?php echo $sts->publisher_name; ?>">
+                                                    <input type="hidden" id="bookCategory<?php echo encurl($sts->id); ?>" name="bookCategory<?php echo encurl($sts->id); ?>" value="<?php echo getValue('l_category',"id='$sts->category'", 'name');  ?>">
+                                                    <input type="hidden" id="bookStatus<?php echo encurl($sts->id); ?>" name="bookStatus<?php echo encurl($sts->id); ?>" value="<?php echo $sts->status;  ?>">
+                                                    <input type="hidden" id="bookCopies<?php echo encurl($sts->id); ?>" name="bookCopies<?php echo encurl($sts->id); ?>" value="<?php echo $sts->books ?>">
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Borrow-Return">
-                                                    <button class="btn btn-info bookBorrow" data-toggle="modal" data-target="#modal-borrow" value="<?php echo $sts->id; ?>">Borrow</button>
+                                                    <button class="btn btn-info bookBorrow" data-toggle="modal" data-target="#modal-borrow" value="<?php echo encurl($sts->id); ?>">Borrow</button>
                                                     <!--<button class="btn btn-info return"  value="<?php echo $sts->id; ?>">Return</button>-->
                                                 </div>
 
@@ -89,16 +89,16 @@
                                         <?php $i++; } ?>
                                     </tbody>
                                     <tfoot>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Author</th>
-                                        <th scope="col">ISBN Number</th>
-                                        <th scope="col">Books/Copies</th>
-                                        <th scope="col">Book Category</th>
-                                        <th scope="col">Action</th>
-                                        <th scope="col">Borrow</th>
-                                    </tr>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Author</th>
+                                            <th scope="col">ISBN Number</th>
+                                            <th scope="col">Books/Copies</th>
+                                            <th scope="col">Book Category</th>
+                                            <th scope="col">Action</th>
+                                            <th scope="col">Borrow</th>
+                                        </tr>
                                     </tfoot>
                                 </table>
                             </div>
@@ -116,7 +116,7 @@
     </div>
     <!-- /.content-wrapper -->
 
-    <div class="modal fade" id="modal-lg">
+    <div class="modal fade" id="modal-view">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -126,42 +126,8 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div id="displayBook" class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="title">Book Title</label>
-                                <input type="text" id="title" name="title" class="form-control" placeholder="Book Title" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="author">Book Author</label>
-                                <input type="text" id="author" name="author" class="form-control" placeholder="Book Author" autocomplete="off">
-                            </div>
-                            <div class="form-group">
-                                <label for="isbn">ISBN</label>
-                                <input type="text" id="isbn" name="isbn" class="form-control" placeholder="ISBN Number" autocomplete="off">
-                            </div>
-                            <div class="form-group">
-                                <label for="books">Stocked Copies</label>
-                                <input type="number" id="books" name="books" class="form-control" placeholder="Number of Books" required autocomplete="off">
-                            </div>
-                            <input type="hidden" id="bookid" name="bookid" value="0">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="publisher">Book Publisher Name</label>
-                                <input type="text" id="publisher" name="publisher" class="form-control" placeholder="Book Publisher">
-                            </div>
-                            <div class="form-group">
-                                <label for="category">Book Category</label>
-                                <input type="text" id="category" name="category" class="form-control" placeholder="Book Publisher">
-                            </div>
-                            <div class="form-group">
-                                <label for="stat3">Book Status</label>
-                                <input type="text" id="status" name="status" class="form-control" placeholder="Book Publisher">
-                            </div>
-                        </div>
-
-                    </div>
+                    <div id="setBook" class="row"></div>
+                    <div class="processing"></div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -288,81 +254,15 @@
     $('.bookView').click(function(e){
         e.preventDefault();
         var id = $(this).val();
-
-        var title = $("#bookTitle").val();
-        var author = $("#bookAuthor").val();
-        var isbn = $("#bookIsbn").val();
-        var books = $("#bookCopies").val();
-        var publisher = $("#bookPublisher").val();
-        var category = $("#bookCategory").val();
-        var status = $("#bookStatus").val();
-
-        $("#title").val(title);
-        $("#title").prop("disabled",'true');
-
-        $("#author").val(author);
-        $("#author").prop("disabled",'true');
-
-        $("#isbn").val(isbn);
-        $("#isbn").prop("disabled",'true');
-
-        $("#books").val(books);
-        $("#books").prop("disabled",'true');
-
-        $("#publisher").val(publisher);
-        $("#publisher").prop("disabled",'true');
-
-        $("#category").val(category);
-        $("#category").prop("disabled",'true');
-
-        $("#status").val(status);
-        $("#status").prop("disabled",'true');
-
+        var params = "bookid="+id;
+        action('components/set.book.php',params,"#setBook");
         $('.saveBook').hide();
-    });
-
-    $(".bookEdit").click(function(e){
-        e.preventDefault();
-        var id = $(this).val();
-
-        var title = $("#bookTitle").val();
-        var author = $("#bookAuthor").val();
-        var isbn = $("#bookIsbn").val();
-        var books = $("#bookCopies").val();
-        var publisher = $("#bookPublisher").val();
-        var category = $("#bookCategory").val();
-        var status = $("#bookStatus").val();
-
-        $("#bookid").val(id);
-
-        $("#title").val(title);
-        $("#title").removeAttr("disabled");
-
-        $("#author").val(author);
-        $("#author").removeAttr("disabled");
-
-        $("#isbn").val(isbn);
-        $("#isbn").removeAttr("disabled");
-
-        $("#books").val(books);
-        $("#books").removeAttr("disabled");
-
-        $("#publisher").val(publisher);
-        $("#publisher").removeAttr("disabled");
-
-        $("#category").val(category);
-        $("#category").removeAttr("disabled");
-
-        $("#status").val(status);
-        $("#status").removeAttr("disabled");
-
-        $('.saveBook').show();
     });
 
     $(".bookDelete").click(function(e) {
         e.preventDefault();
         var bookid = $(this).val();
-        var title = $("#bookTitle").val()
+        var title = $("#bookTitle"+bookid).val()
         console.log(bookid);
         bootbox.confirm({
             message: "Are you sure you would like to Delete "+title+"?",
@@ -380,7 +280,6 @@
                 if(result == 1){
                     params = "bookId="+bookid;
                     action("components/delete_book.php",params);
-                    //console.log('This was logged in the callback: ' + result);
                 }
             }
         });
@@ -390,9 +289,9 @@
         var bookid = $(this).val();
 
 
-        var title = $("#bookTitle").val();
-        var author = $("#bookAuthor").val();
-        var isbn = $("#bookIsbn").val();
+        var title = $("#bookTitle"+bookid).val();
+        var author = $("#bookAuthor"+bookid).val();
+        var isbn = $("#bookIsbn"+bookid).val();
 
         $("#borrowBookId").val(bookid);
 

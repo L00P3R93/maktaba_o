@@ -3,8 +3,8 @@
     include_once '../includes/data.php';
 
     if($_POST){
-        $sid = $_REQUEST['sid'];
-        $uid = 0;
+        $sid = decurl($_REQUEST['sid']);
+        $uid = decurl($_REQUEST['studid']);
         $f_name = $_REQUEST['f_name'];
         $m_name = $_REQUEST['m_name'];
         $l_name = $_REQUEST['l_name'];
@@ -22,8 +22,26 @@
         if($status>0){$statusOk=1;}else{$statusOk=0;$error="Student Status Needed";}
         $validated = $fNameOk+$lNameOk+$mNameOk+$classOk+$statusOk;
         if($validated == 5){
-            if($uid>0){/*Update*/}
-            else{
+            if($uid>0){
+                $updateString = "f_name='$f_name',m_name='$m_name',l_name='$l_name',adm_no='$adm_no',class='$class',status='$status',added_by='$sid'";
+                $update = updateDb('l_student',$updateString,"id='$uid'");
+                if($update == 1){
+                    $proceed = 1;
+                    echo "
+                        <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
+                        <script>
+                            toastr.success('Student Updated Succesfully');
+                        </script>";
+                    echo success("Student Updated Succesfully");
+                }else{
+                    echo "
+                        <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
+                        <script>
+                            toastr.error('Student Not Updated');
+                        </script>";
+                    echo error("Student Not Updated");
+                }
+            }else{
                 $username = $f_name.".".$l_name;
                 $fields = array("f_name","m_name","l_name","adm_no","username","class","status","added_by");
                 $values = array("$f_name","$m_name","$l_name","$adm_no","$username","$class","$status","$sid");

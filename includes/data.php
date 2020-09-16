@@ -165,6 +165,9 @@
             case 'sa':
                 return "Staff";
                 break;
+            case 's':
+                return "Search";
+                break;
             default:
                 return "Maktaba";
                 break;
@@ -220,6 +223,26 @@
                 break;
         }
 
+    }
+
+    function getGroup($group){
+        switch ($group){
+            case "1":
+                return "Admin";
+                break;
+            case "2":
+                return "Super Admin";
+                break;
+            case "3":
+                return "Staff";
+                break;
+            case "4":
+                return  "Student";
+                break;
+            default:
+                return "Invalid";
+                break;
+        }
     }
 
     function getTable($table, $cols='*'){
