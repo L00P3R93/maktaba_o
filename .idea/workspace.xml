@@ -3,30 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="81c2c69c-4051-470d-bfa0-fea9a2d7e31e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/credit/american-express.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/credit/cirrus.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/credit/mastercard.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/credit/mestro.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/credit/paypal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/credit/paypal2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/img/credit/visa.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/books.php" beforeDir="false" afterPath="$PROJECT_DIR$/books.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/delete_book.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/delete_book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/save_book.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_book.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/save_staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_staff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/save_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/search_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/search_student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/base/head.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/head.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/base/js.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/js.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/base/meta.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/meta.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/nav/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/nav/side.nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/side.nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/students.php" beforeDir="false" afterPath="$PROJECT_DIR$/students.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/site.webmanifest" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +76,7 @@
       <workItem from="1600157303805" duration="469000" />
       <workItem from="1600164607169" duration="477000" />
       <workItem from="1600165540790" duration="15714000" />
-      <workItem from="1600232755515" duration="8842000" />
+      <workItem from="1600232755515" duration="9104000" />
     </task>
     <servers />
   </component>
