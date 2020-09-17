@@ -2,8 +2,12 @@
     session_start();
     include_once '../includes/conn.php';
     include_once '../includes/data.php';
+    include_once '../includes/auth.php';
 
+    $auth = new Auth();
+    $util = new Util();
     if($_POST){
+        $isAuthenticated = false;
         $email = mysqli_real_escape_string($con,$_POST['email']);
         $pass = mysqli_real_escape_string($con,$_POST['pass']);
         $emailOk = input_available($email);
@@ -23,6 +27,33 @@
                     $enc_userid = encurl($userid);
                     $_SESSION['maktaba_'] = $enc_userid;
                     if(isset($_SESSION['maktaba_'])){
+                        /*if(isset($_POST["remember"])){
+                            $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;
+                            setcookie("staff_login",$email,$cookie_expiration_time,"/",$domain,false);
+
+                            $random_password = $util->genToken(16);
+                            setcookie("random_password",$random_password,$cookie_expiration_time,"/",$domain,false);
+
+                            $random_selector = $util->genToken(32);
+                            setcookie("random_selector",$random_selector, $cookie_expiration_time,"/",$domain,false);
+
+                            $random_password_hash = password_hash($random_password,PASSWORD_DEFAULT);
+                            $random_selector_hash = password_hash($random_selector,PASSWORD_DEFAULT);
+                            $expiry_date = date("Y-m-d H:i:s", $cookie_expiration_time);
+
+                            //Mark existing token as expired
+                            $userToken = $auth->getToken($email,0);
+                            if(!empty($userToken[0]["id"])){
+                                $auth->markAsExpired($userToken[0]["id"]);
+                            }
+
+                            //Insert new Token
+                            $ins=$auth->insertToken($email,$random_password_hash,$random_selector_hash,$expiry_date);
+                            //echo $ins;
+                        }else{
+                            $util->clearAuthCookie();
+                            //echo $_POST['remember'];
+                        }*/
                         $refresh = 1;
                         echo success('Successfully loggedin. Please wait ...');
                     }else{

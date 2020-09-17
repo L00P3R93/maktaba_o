@@ -4,6 +4,7 @@
 
     if($_POST){
         $sid = decurl($_REQUEST['sid']);
+        $username = getValue('l_staff',"id='$sid'",'username');
         $uid = decurl($_REQUEST['studid']);
         $f_name = $_REQUEST['f_name'];
         $m_name = $_REQUEST['m_name'];
@@ -27,6 +28,9 @@
                 $update = updateDb('l_student',$updateString,"id='$uid'");
                 if($update == 1){
                     $proceed = 1;
+                    $sid = decurl($_SESSION["maktaba_"]);
+                    $desc = "Updated Student [$adm_no] by [$username]";
+                    save_log($desc,$sid);
                     echo "
                         <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
                         <script>
@@ -48,6 +52,8 @@
                 $create = insertDb('l_student',$fields,$values);
                 if($create == 1){
                     $proceed = 1;
+                    $desc = "Created New Student [$username]";
+                    save_log($desc,$sid);
                     echo "
                         <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
                         <script>

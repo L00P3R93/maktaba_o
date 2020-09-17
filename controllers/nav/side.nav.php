@@ -26,6 +26,7 @@
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Books
+                            <span class="badge badge-info right"><?php echo getTotal('l_books',"status='1'",'books'); ?></span>
                         </p>
                     </a>
                 </li>
@@ -34,6 +35,7 @@
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
                             Categories
+                            <span class="badge badge-info right"><?php echo getCount('l_category',"id>0"); ?></span>
                         </p>
                     </a>
                 </li>

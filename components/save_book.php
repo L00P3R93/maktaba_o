@@ -4,6 +4,7 @@
         require '../includes/conn.php';
 
         $sid = decurl($_REQUEST['sid']);
+        $username = getValue('l_staff',"id='$sid'",'username');
         $bookid = decurl($_REQUEST['bookid']);
         $title = $_REQUEST['title'];
         $author = $_REQUEST['author'];
@@ -26,6 +27,8 @@
                 $update = updateDb('l_books',$updateString,"id='$bookid'");
                 if($update == 1){
                     $proceed = 1;
+                    $desc = "Updated Book [$title] By [$username]";
+                    save_log($desc,$sid);
                     echo success("Book Updated Successfully");
                     echo "
                         <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
@@ -47,10 +50,11 @@
                 if($create == 1){
                     $proceed = 1;
                     $book_id = getValue('l_books',"title='$title'",'id');
-                    $desc = "Created New Book";
+                    $desc = "Created New Book [$title] By [$username]";
                     $fds = array('book_id','description','added_by');
                     $vals = array($book_id,$desc,$sid);
                     $create_activity = insertDb('l_book_activity',$fds,$vals);
+                    save_log($desc,$sid);
                     echo success("Book Created Successfully");
                     echo "
                         <script src=\"assets/plugins/toastr/toastr.min.js\"></script>

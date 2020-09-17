@@ -40,7 +40,7 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="example1" class="table table-bordered table-striped">
+                                <table id="example1" class="table table-responsive table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -53,7 +53,7 @@
                                     <?php
                                     $i=1;
                                     $st = getTable('l_category');
-                                    while($sts = mysqli_fetch_object($st)){ ?>
+                                    while($sts=mysqli_fetch_object($st)){ ?>
                                         <tr>
                                             <td><?php echo $i; ?></td>
                                             <td><?php echo $sts->name; ?></td>

@@ -184,8 +184,8 @@
                                 $title=$r['title']; $author=$r['author']; $isbn=$r['isbn']; $books=$r['books'];
                                 $publisher=$r['publisher_name']; $category=$r['category']; $status=$r['status'];
                             }else{
-                                $title=""; $author=""; $isbn=""; $books="";
-                                $publisher=""; $category=""; $status="";
+                                $bookid=0;
+                                $title=""; $author=""; $isbn=""; $books=""; $publisher=""; $category=""; $status="";
                             }
 
                             ?>

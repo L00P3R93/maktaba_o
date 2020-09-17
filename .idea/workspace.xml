@@ -3,12 +3,27 @@
   <component name="ChangeListManager">
     <list default="true" id="81c2c69c-4051-470d-bfa0-fea9a2d7e31e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/borrowed.php" beforeDir="false" afterPath="$PROJECT_DIR$/borrowed.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/borrow.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/borrow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/delete_book.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/delete_book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/delete_category.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/delete_category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/delete_staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/delete_staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/delete_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/delete_student.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/login-process.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/login-process.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/set.staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/set.staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/return.set.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/return.set.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_book.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_book.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_category.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_staff.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_student.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/base/css.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/css.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/nav/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/nav/side.nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/side.nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/data.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +97,9 @@
       <workItem from="1600164607169" duration="477000" />
       <workItem from="1600165540790" duration="15714000" />
       <workItem from="1600232755515" duration="13736000" />
+      <workItem from="1600324593965" duration="12750000" />
+      <workItem from="1600337482293" duration="3572000" />
+      <workItem from="1600341419094" duration="9598000" />
     </task>
     <servers />
   </component>
@@ -93,10 +111,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1599550042593" />
-    <state x="176" y="292" key="NewPhpFileDialog" timestamp="1600240983802">
+    <state x="176" y="292" key="NewPhpFileDialog" timestamp="1600348730203">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="176" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1600240983802" />
+    <state x="176" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1600348730203" />
     <state x="676" y="0" width="697" height="745" key="dock-window-1" timestamp="1599340340605">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -105,9 +123,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="344" y="181" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1600241739179" />
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1599739006527">
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1600342154886">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1599739006527" />
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1600342154886" />
   </component>
 </project>

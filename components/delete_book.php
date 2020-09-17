@@ -1,12 +1,18 @@
 <?php
     if($_POST){
+        session_start();
         require '../includes/conn.php';
         require '../includes/data.php';
         $book_id = decurl($_REQUEST['bookId']);
         if($book_id>0){
+            $book_name = getValue('l_books',"id='$book_id'","title");
             $delete = deleteDb('l_books',"id='$book_id'");
             if($delete == 1){
                 $proceed = 1;
+                $sid = decurl($_SESSION["maktaba_"]);
+                $username = getValue('l_staff',"id='$sid'",'username');
+                $desc = "Deleted Book [$book_name] By [$username]";
+                save_log($desc,$sid);
                 echo "
                     <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
                     <script>
@@ -32,7 +38,7 @@
     var proceed = "<?php echo $proceed; ?>";
     if(proceed === "1"){
         setTimeout(function() {
-            window.location.href = 'books?a=b'; // the redirect goes here
+            location.reload();
         }, 2000); // 4 seconds
     }
 </script>

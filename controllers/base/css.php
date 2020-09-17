@@ -32,6 +32,12 @@
 
 
 <style>
+    .feed{
+        width: 100%;
+        margin-top: .25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }
     .search{
         width: 500px;
     }

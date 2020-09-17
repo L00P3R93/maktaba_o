@@ -1,12 +1,19 @@
 <?php
     if($_POST){
+        session_start();
         require '../includes/conn.php';
         require '../includes/data.php';
         $studentid = decurl($_REQUEST['studid']);
         if($studentid>0){
+            $adm_no = getValue('l_student',"id='$studentid'","adm_no");
+            $student_name = getValue('l_student',"id='$studentid'",'username');
             $delete = deleteDb('l_student',"id='$studentid'");
             if($delete == 1){
                 $proceed = 1;
+                $sid = decurl($_SESSION["maktaba_"]);
+                $username = getValue('l_staff',"id='$sid'",'username');
+                $desc = "Deleted Student [$adm_no] [$student_name] By [$username]";
+                save_log($desc,$sid);
                 echo "
                     <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
                     <script>

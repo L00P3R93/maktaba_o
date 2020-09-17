@@ -3,7 +3,7 @@
         require '../includes/conn.php';
         require '../includes/data.php';
 
-        $borrow_id = $_REQUEST['id'];
+        $borrow_id = decurl($_REQUEST['id']);
         if($borrow_id>0){
             $r = getOneRow('l_borrowed',"id='$borrow_id'");
             $book_id = $r['book_id'];

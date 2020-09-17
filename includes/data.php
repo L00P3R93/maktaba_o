@@ -168,6 +168,12 @@
             case 's':
                 return "Search";
                 break;
+            case 'r':
+                return "Reset";
+                break;
+            case 'p':
+                return "Profile";
+                break;
             default:
                 return "Maktaba";
                 break;
@@ -354,6 +360,17 @@
         else{return 1;}
     }
 
+    function runQuery($q){
+        global $con;
+        $r = mysqli_query($con,$q);
+        while($row=mysqli_fetch_assoc($r)){
+            $res[] = $row;
+        }
+        if(!empty($res))
+            return $res;
+    }
+
+
     function permission_check($user, $module, $action){
         $userGroup = getValue('l_staff', "id=$user", "user_group");
         $group = getOneRow('l_group_permissions',"group_id=$userGroup AND permission_name=$module");
@@ -401,11 +418,11 @@
         }
     }
 
-    function save_log($content){
+    function save_log($content,$by){
         global $con;
         global $fdate;
-        $fields = array('activity','date_created');
-        $values = array($content, $fdate);
+        $fields = array('activity','user_id','date_created');
+        $values = array($content,$by,$fdate);
         insertDb('l_activity_logs', $fields, $values);
     }
 
@@ -429,4 +446,66 @@
         $r = mysqli_query($con, $q);
         return $r;
     }
-    class borrow_book{}
+
+
+
+    class Auth{
+        function getUser($username){
+            $q = "SELECT * from l_staff WHERE status='1' AND (email='$username' OR username='$username')";
+            $r = runQuery($q);
+            return $r;
+        }
+        function getToken($username,$expired){
+            $q = "SELECT * FROM l_token_auth WHERE username='$username' AND is_expired='$expired'";
+            $r = runQuery($q);
+            return $r;
+        }
+
+        function markAsExpired($tokenId){
+            return updateDb('l_token_auth',"is_expired='1'","id='$tokenId'");
+        }
+
+        function insertToken($username,$random_password_hash,$random_selector_hash,$expiry_date){
+            $fds = array('username','password_hash','selector_hash','expiry_date');
+            $vals = array("$username","$random_password_hash","$random_selector_hash","$expiry_date");
+            $insert = insertDb('l_token_auth',$fds,$vals);
+            return $insert;
+        }
+    }
+
+    class Util{
+        public function genToken($length){
+            $token="";
+            $alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            $max = strlen($alpha)-1;
+            for($i=0; $i<$length; $i++){
+                $token .= $alpha[$this->cryptoR(0,$max)];
+            }
+            return $token;
+        }
+        public function cryptoR($min, $max){
+            $range = $max - $min;
+            if($range < 1){return $min;}
+            $log = ceil(log($range, 2));
+            $bytes = (int)($log/8)+1; //length in bytes
+            $bits = (int)$log+1; //length in bits
+            $filter = (int)(1 << $bits) - 1; //Sets all lower bits to 1
+            do{
+                $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+                $rnd = $rnd & $filter; //filter and discard irrelevant bits
+            }while($rnd >= $range);
+            return $min+$rnd;
+        }
+        public function clearAuthCookie(){
+            if(isset($_COOKIE["staff_login"])){
+                setcookie("staff_login","");
+            }
+            if(isset($_COOKIE["random_password"])){
+                setcookie("random_password","");
+            }
+            if(isset($_COOKIE["random_selector"])){
+                setcookie("random_selector","");
+            }
+        }
+
+    }

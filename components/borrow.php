@@ -4,8 +4,10 @@
         require '../includes/data.php';
 
         $sid = decurl($_REQUEST['sid']);
+        $username = getValue('l_staff',"id='$sid'",'username');
         $bookid = $_REQUEST['bookid'];
         $studentid = $_REQUEST['studentid'];
+        $adm_no = getValue('l_student',"id='$studentid'",'adm_no');
         $title = $_REQUEST['title'];
         $author = $_REQUEST['author'];
         $isbn = $_REQUEST['isbn'];
@@ -31,6 +33,9 @@
                         $fdss = Array("book_id","description","added_by");
                         $valss = Array("$bookid","Borrowed Book","$sid");
                         insertDb("l_book_activity",$fdss,$valss);
+                        $sid = decurl($_SESSION["maktaba_"]);
+                        $desc = "Issued Book to [$adm_no] by [$username]";
+                        save_log($desc,$sid);
                         echo "
                             <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
                             <script>

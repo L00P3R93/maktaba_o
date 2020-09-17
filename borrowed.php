@@ -36,7 +36,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Book </h3>
-                                <button class="btn btn-primary ml-5" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus-circle"></i> New Book</button>
+                                <!--<button class="btn btn-primary ml-5" data-toggle="modal" data-target="#modal-lg"><i class="fas fa-plus-circle"></i> New Book</button>-->
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -47,7 +47,7 @@
                                         <th scope="col">Title</th>
                                         <th scope="col">Books/Copies</th>
                                         <th scope="col">Borrower</th>
-                                        <!--<th scope="col">Issuer</th>-->
+                                        <th scope="col">Issuer</th>
                                         <th scope="col">Borrow_Date</th>
                                         <th scope="col">Return_Date</th>
                                         <th scope="col">Borrow Status</th>
@@ -64,12 +64,17 @@
                                             <td><?php echo getValue("l_books","id='$sts->book_id'",'title'); ?></td>
                                             <td><?php echo $sts->books." Book(s)"; ?></td>
                                             <td><?php echo getValue('l_student',"id='$sts->student_id'",'adm_no'); ?></td>
-                                            <!--<td><?php echo getValue('l_staff', "id='$sts->issued_by'","username"); ?></td>-->
+                                            <td><?php echo getValue('l_staff', "id='$sts->issued_by'","username"); ?></td>
                                             <td><?php echo date("d-M-Y", strtotime($sts->borrow_date)); ?></td>
                                             <td><?php echo date("d-M-Y", strtotime($sts->return_date)); ?></td>
                                             <td><?php echo getBorrowStatus($sts->borrow_status,$sts->return_date)?></td>
                                             <td>
-                                                <button class="btn btn-primary bookReturn" data-toggle="modal" data-target="#modal-return" value="<?php echo $sts->id; ?>">Return</button>
+                                            <?php
+                                                    if($sts->borrow_status == 1){ ?>
+                                                        <button class="btn btn-primary bookReturn" data-toggle="modal" data-target="#modal-return" value="<?php echo encurl($sts->id); ?>">Return</button>
+                                            <?php   }else{ ?>
+                                                        Returned.
+                                            <?php   } ?>
                                             </td>
 
                                         </tr>
@@ -81,7 +86,7 @@
                                         <th scope="col">Title</th>
                                         <th scope="col">Books/Copies</th>
                                         <th scope="col">Borrower</th>
-                                        <!--<th scope="col">Issuer</th>-->
+                                        <th scope="col">Issuer</th>
                                         <th scope="col">Borrow_Date</th>
                                         <th scope="col">Return_Date</th>
                                         <th scope="col">Borrow Status</th>
@@ -121,6 +126,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="feedback"></div>
                     <button type="button" class="btn btn-primary saveReturn" value="SAVE_RETURN">Save changes</button>
                 </div>
             </div>
@@ -168,7 +174,7 @@
         var returnId = $("#returnId").val();
         //console.log(returnId);
         params = "id="+returnId;
-        //action('components/return.php',params);
+        action('components/return.php',params);
     });
 </script>
 </body>

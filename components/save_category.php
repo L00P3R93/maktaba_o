@@ -1,5 +1,6 @@
 <?php
     if($_POST){
+        session_start();
         require '../includes/conn.php';
         require '../includes/data.php';
         $category_name = $_REQUEST['categoryName'];
@@ -17,6 +18,10 @@
                 $upd = updateDb('l_category',$updateString,"id='$category_id'");
                 if($upd == 1){
                     $proceed = 1;
+                    $sid = decurl($_SESSION["maktaba_"]);
+                    $username = getValue('l_staff',"id='$sid'","name");
+                    $desc = "Updated Category Name [$category_name] By [$username]";
+                    save_log($desc,$sid);
                     echo "
                         <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
                         <script>
@@ -34,6 +39,9 @@
                 $create = insertDb('l_category',$fds,$val);
                 if($create==1){
                     $proceed = 1;
+                    $sid = decurl($_SESSION["maktaba_"]);
+                    $desc = "Created New Category";
+                    save_log($desc,$sid);
                     echo "
                         <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
                         <script>

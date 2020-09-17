@@ -33,8 +33,8 @@
     </div>
 
     <div class="form-label-group">
-        <input type="email" id="email" name="pass" class="form-control" placeholder="Email address" required autofocus>
-        <label for="email">Email address</label>
+        <input type="text" id="email" name="email" class="form-control" placeholder="Username/Email address" required autofocus>
+        <label for="email">Username/Email address</label>
     </div>
 
     <div class="form-label-group">
@@ -44,7 +44,7 @@
 
     <div class="checkbox mb-3">
         <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" name="remember" id="remember" value="remember-me"> Remember me
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block signin">Sign in</button>
@@ -64,10 +64,11 @@
 
            var email = $("#email").val();
            var pass = $("#pass").val();
+           var remember = $("#remember :checked").val()
            if(email == "" && pass==""){}
            else{
                var ico = '<img src="assets/img/loader.gif" title="Processing" height="22px" alt="..."/>';
-               var dataString = "email="+email+"&pass="+pass;
+               var dataString = "email="+email+"&pass="+pass+"&remember="+remember;
                console.log(dataString);
                $.ajax({
                    url: "components/login-process.php",
