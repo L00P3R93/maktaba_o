@@ -38,6 +38,15 @@
                     <i class="fas fa-users mr-2"></i> Password Reset
                 </a>
                 <div class="dropdown-divider"></div>
+                <?php
+                    if(permission_check(decurl($_SESSION['maktaba_']),"SETTING_MANAGEMENT","view") && permission_check(decurl($_SESSION['maktaba_']),"SETTING_MANAGEMENT","add")){ ?>
+                        <a href="logs?a=l" class="dropdown-item">
+                            <i class="fas fa-clipboard-list mr-2"></i> Activity Logs
+                        </a>
+                        <div class="dropdown-divider"></div>
+                <?php
+                    }else{}
+                ?>
                 <a href="components/log-out.php" class="dropdown-item">
                     <i class="fas fa-file mr-2"></i> Sign Out
                 </a>

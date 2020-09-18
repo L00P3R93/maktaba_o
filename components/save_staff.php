@@ -5,7 +5,7 @@
     if($_POST){
 
         $sid = decurl($_REQUEST["sid"]);
-        $username = getValue('l_staff',"id='$sid'",'username');
+        $user = getValue('l_staff',"id='$sid'",'username');
         $uid = decurl($_REQUEST["uid"]);
         $f_name = $_REQUEST['f_name'];
         $l_name = $_REQUEST['l_name'];
@@ -36,7 +36,7 @@
                 $update = updateDb('l_staff',$updateString,"id='$uid'");
                 if($update == 1){
                     $proceed = 1;
-                    $desc = "Updated Staff [$username] by [$username]";
+                    $desc = "Updated Staff [$username] by [$user]";
                     save_log($desc,$sid);
                     echo "
                             <script src=\"assets/plugins/toastr/toastr.min.js\"></script>
@@ -67,7 +67,7 @@
                     echo success('User Added Successfully');
                     $userid = getValue('l_staff',"email='$email'","id");
                     $proceed = 1;
-                    $desc = "Created New User [$email] by [$username]";
+                    $desc = "Created New User [$email] by [$user]";
                     save_log($desc,$sid);
                     $fields = array('user_id','pass');
                     $values = array($userid,$salt);

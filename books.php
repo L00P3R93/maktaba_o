@@ -65,9 +65,17 @@
                                             <td><?php echo getValue('l_category',"id=$sts->category",'name'); ?></td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Action">
-                                                    <button class="btn btn-primary bookView" data-toggle="modal" data-target="#modal-view" value="<?php echo encurl($sts->id); ?>"><i class="fas fa-eye"></i></button>
-                                                    <a href="add?a=nb&t=book&id=<?php echo encurl($sts->id); ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
-                                                    <button class="btn btn-danger bookDelete" value="<?php echo encurl($sts->id); ?>" ><i class="fas fa-trash-alt"></i></button>
+                                                <?php
+                                                        if(permission_check(decurl($_SESSION['maktaba_']),"BOOK_MANAGEMENT","view")){ ?>
+                                                            <button class="btn btn-primary bookView" data-toggle="modal" data-target="#modal-view" value="<?php echo encurl($sts->id); ?>"><i class="fas fa-eye"></i></button>
+                                                <?php   }
+                                                        if(permission_check(decurl($_SESSION['maktaba_']), "BOOK_MANAGEMENT", "edit")){ ?>
+                                                            <a href="add?a=nb&t=book&id=<?php echo encurl($sts->id); ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                                <?php   }
+                                                        if(permission_check(decurl($_SESSION['maktaba_']), "BOOK_MANAGEMENT", "delete")){ ?>
+                                                            <button class="btn btn-danger bookDelete" value="<?php echo encurl($sts->id); ?>" ><i class="fas fa-trash-alt"></i></button>
+                                                <?php   } ?>
+
 
                                                     <input type="hidden" id="bookTitle<?php echo encurl($sts->id); ?>" name="bookTitle<?php echo encurl($sts->id); ?>" value="<?php echo $sts->title ?>">
                                                     <input type="hidden" id="bookAuthor<?php echo encurl($sts->id); ?>" name="bookAuthor<?php echo encurl($sts->id); ?>" value="<?php echo $sts->author ?>">
@@ -80,7 +88,10 @@
                                             </td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Borrow-Return">
-                                                    <button class="btn btn-info bookBorrow" data-toggle="modal" data-target="#modal-borrow" value="<?php echo encurl($sts->id); ?>">Borrow</button>
+                                                <?php
+                                                        if(permission_check(decurl($_SESSION['maktaba_']),"BOOK_MANAGEMENT","edit")){ ?>
+                                                            <button class="btn btn-info bookBorrow" data-toggle="modal" data-target="#modal-borrow" value="<?php echo encurl($sts->id); ?>">Borrow</button>
+                                                <?php   } ?>
                                                     <!--<button class="btn btn-info return"  value="<?php echo $sts->id; ?>">Return</button>-->
                                                 </div>
 

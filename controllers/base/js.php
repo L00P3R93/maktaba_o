@@ -53,6 +53,9 @@
         $("#example1").DataTable({
             "responsive": false,
             "autoWidth": true,
+            "paging": true,
+            "ordering": true,
+            "info": true,
         });
         $('#example2').DataTable({
             "paging": true,
@@ -93,6 +96,7 @@
                 error: function(){$(feedbackArea).html('Oops! Something went wrong');}
             });
         }
+
 
         function validate_phone(phone){
             var toMatch = /^07\d{8}$/;

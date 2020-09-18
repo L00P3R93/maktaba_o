@@ -77,7 +77,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <!--<li class="nav-item ">
                     <a href="fines?a=f" class="nav-link <?php echo selected($_GET['a'],"f","active"); ?>">
                         <i class="nav-icon fas fa-comments-dollar"></i>
                         <p>
@@ -85,7 +85,7 @@
 
                         </p>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
@@ -94,25 +94,46 @@
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
+
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="add?t=staff&a=nsa" class="nav-link">
-                                <i class="far fa-user-circle nav-icon"></i>
-                                <p>Add Staff</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="add?t=stud&a=nsu" class="nav-link">
-                                <i class="far fa-id-badge nav-icon"></i>
-                                <p>Add Student</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="add?t=book&a=nbo" class="nav-link">
-                                <i class="far fa-book-medical nav-icon"></i>
-                                <p>Add Book</p>
-                            </a>
-                        </li>
+                        <?php
+                            if(permission_check(decurl($_SESSION['maktaba_']),"STAFF_MANAGEMENT","view") && permission_check(decurl($_SESSION['maktaba_']),"STAFF_MANAGEMENT","add")){ ?>
+                                <li class="nav-item">
+                                    <a href="add?t=staff&a=nsa" class="nav-link">
+                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <p>Add Staff</p>
+                                    </a>
+                                </li>
+                        <?php
+                            }else{}
+                            if(permission_check(decurl($_SESSION['maktaba_']),"STUDENT_MANAGEMENT","view") && permission_check(decurl($_SESSION['maktaba_']),"STUDENT_MANAGEMENT","add")){ ?>
+                                <li class="nav-item">
+                                    <a href="add?t=stud&a=nsu" class="nav-link">
+                                        <i class="far fa-id-badge nav-icon"></i>
+                                        <p>Add Student</p>
+                                    </a>
+                                </li>
+                        <?php
+                            }else{}
+                            if(permission_check(decurl($_SESSION['maktaba_']),"BOOK_MANAGEMENT","view") && permission_check(decurl($_SESSION['maktaba_']),"BOOK_MANAGEMENT","add")){ ?>
+                                <li class="nav-item">
+                                    <a href="add?t=book&a=nbo" class="nav-link">
+                                        <i class="fas fa-book nav-icon"></i>
+                                        <p>Add Book</p>
+                                    </a>
+                                </li>
+                        <?php
+                            }else{}
+                            if(permission_check(decurl($_SESSION['maktaba_']),"SETTING_MANAGEMENT","view") && permission_check(decurl($_SESSION['maktaba_']),"SETTING_MANAGEMENT","add")){ ?>
+                                <li class="nav-item">
+                                    <a href="setting?a=set" class="nav-link">
+                                        <i class="fas fa-user-cog nav-icon"></i>
+                                        <p>Permissions</p>
+                                    </a>
+                                </li>
+                        <?php
+                            }else{}
+                        ?>
                     </ul>
                 </li>
                 <li class="nav-item ">
@@ -120,7 +141,6 @@
                         <i class="nav-icon fas fa-circle-notch"></i>
                         <p>
                             Logout
-
                         </p>
                     </a>
                 </li>

@@ -70,9 +70,11 @@
                                             <td><?php echo getBorrowStatus($sts->borrow_status,$sts->return_date)?></td>
                                             <td>
                                             <?php
-                                                    if($sts->borrow_status == 1){ ?>
+
+                                                    if($sts->borrow_status == 1){
+                                                        if (permission_check(decurl($_SESSION['maktaba_']), "BOOK_MANAGEMENT", "edit")) { ?>
                                                         <button class="btn btn-primary bookReturn" data-toggle="modal" data-target="#modal-return" value="<?php echo encurl($sts->id); ?>">Return</button>
-                                            <?php   }else{ ?>
+                                            <?php   }}else{ ?>
                                                         Returned.
                                             <?php   } ?>
                                             </td>

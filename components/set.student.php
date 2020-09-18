@@ -5,7 +5,6 @@
         $studentid = decurl($_REQUEST['studid']);
         if($studentid>0){
             $r=getOneRow('l_student',"id='$studentid'"); ?>
-
             <div class="col-md-12">
                 <!-- Profile Image -->
                 <div class="card card-primary card-outline">

@@ -27,11 +27,17 @@
 <link rel="stylesheet" href="assets/css/adminlte.min.css">
 <!-- Google Font: Source Sans Pro -->
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-
-
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+    body{
+        font-family: 'Raleway', sans-serif !important;
+    }
+
+    .croll{
+        max-height: 80vh;
+        overflow-y: scroll;
+    }
     .feed{
         width: 100%;
         margin-top: .25rem;

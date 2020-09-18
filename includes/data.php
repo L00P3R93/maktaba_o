@@ -174,6 +174,12 @@
             case 'p':
                 return "Profile";
                 break;
+            case 'l':
+                return "Activity Logs";
+                break;
+            case 'set':
+                return "Settings";
+                break;
             default:
                 return "Maktaba";
                 break;
@@ -251,6 +257,14 @@
         }
     }
 
+    function setPermission($p,$groupid,$pname,$type){
+        if($p == 1){
+            echo "<a onclick='changeperm(\"$groupid\",\"$pname\",\"$type\",\"0\")' class='fas fa-check text-success'></a>";
+        }else{
+            echo "<a onclick='changeperm(\"$groupid\",\"$pname\",\"$type\",\"1\")' class='fas fa-times text-danger'></a>";
+        }
+    }
+
     function getTable($table, $cols='*'){
         global $con; $all =array();
         $q = "SELECT $cols FROM $table";
@@ -324,8 +338,8 @@
     function checkRowExists($table,$conditions,$cols='*'){
         global $con;
         $q = "SELECT $cols FROM $table WHERE $conditions";
-        $r = mysqli_num_rows(mysqli_query($q));
-        if(r>0){return 1;}
+        $r = mysqli_num_rows(mysqli_query($con,$q));
+        if($r>0){return 1;}
         else{return 0;}
     }
 
@@ -372,8 +386,8 @@
 
 
     function permission_check($user, $module, $action){
-        $userGroup = getValue('l_staff', "id=$user", "user_group");
-        $group = getOneRow('l_group_permissions',"group_id=$userGroup AND permission_name=$module");
+        $userGroup = getValue('l_staff', "id='$user'", "user_group");
+        $group = getOneRow('l_group_permissions',"group_id='$userGroup' AND permission_name='$module'");
         $view = $group['p_view']; $add = $group['p_add'];
         $edit = $group['p_edit']; $del = $group['p_del'];
         switch ($action){
