@@ -57,9 +57,9 @@
                                 $studentid = decurl($_REQUEST['id']);
                                 $r = getOneRow('l_student',"id='$studentid'");
                                 $fname=$r['f_name']; $mname=$r['m_name']; $lname=$r['l_name'];
-                                $admno=$r['adm_no']; $class=$r['class']; $status=$r['status'];
+                                $admno=$r['adm_no']; $class=$r['class']; $status=$r['status']; $stream=$r['stream'];
                             }else{
-                                $studentid=0; $fname=""; $mname=""; $lname=""; $admno=""; $class=""; $status="";
+                                $studentid=0; $fname=""; $mname=""; $lname=""; $admno=""; $class=""; $status=""; $stream="";
                             }
 
                             ?>
@@ -92,6 +92,18 @@
                                             <option <?php echo selected($class,"2", 'selected') ?> value="2">Form Two</option>
                                             <option <?php echo selected($class,"3", 'selected') ?> value="3">Form Three</option>
                                             <option <?php echo selected($class,"4", 'selected') ?> value="4">Form Four</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Class Stream</label>
+                                        <select class="form-control select2" style="width: 100%;" name="stream" id="stream">
+                                            <option value="0">Select Stream</option>
+                                            <?php
+                                                $st = getTable("l_streams");
+                                                while($r=mysqli_fetch_object($st)){ ?>
+                                                    <option <?php echo selected($stream,$r->id, 'selected') ?> value="<?php echo $r->id?>"><?php echo $r->name; ?></option>
+                                        <?php    }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>

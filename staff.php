@@ -36,7 +36,9 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Staff</h3>
-                                <a href="add?a=nsa&t=staff" class="btn btn-primary ml-5"><i class="fas fa-plus-circle"></i> New Staff</a>
+                            <?php   if(permission_check(decurl($_SESSION["maktaba_"]),"STAFF_MANAGEMENT","add")){ ?>
+                                        <a href="add?a=nsa&t=staff" class="btn btn-primary ml-5"><i class="fas fa-plus-circle"></i> New Staff</a>
+                            <?php   } ?>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -70,9 +72,15 @@
                                             <td><?php echo getStatus($sts->status); ?></td>
                                             <td>
                                                 <div class="btn-group" role="group" aria-label="Action Buttons">
+                                                    <?php   if(permission_check(decurl($_SESSION["maktaba_"]),"STAFF_MANAGEMENT","view")){ ?>
                                                     <button class="btn btn-primary viewStaff" data-toggle="modal" data-target="#modal-view" value="<?php echo encurl($sts->id); ?>"><i class="fas fa-eye"></i></button>
+                                                    <?php   }
+                                                            if(permission_check(decurl($_SESSION["maktaba_"]),"STAFF_MANAGEMENT","edit")){ ?>
                                                     <a class="btn btn-secondary" href="add?a=nsa&t=staff&id=<?php echo encurl($sts->id); ?>"><i class="fas fa-edit"></i></a>
+                                                    <?php   }
+                                                            if(permission_check(decurl($_SESSION["maktaba_"]),"STAFF_MANAGEMENT","delete")){ ?>
                                                     <button class="btn btn-danger deleteStaff" value="<?php echo encurl($sts->id); ?>"><i class="fas fa-trash-alt"></i></button>
+                                                    <?php   }  ?>
                                                 </div>
                                                 <input type="hidden" name="uname<?php echo encurl($sts->id); ?>" id="uname<?php echo encurl($sts->id); ?>" value="<?php echo $sts->f_name." ".$sts->l_name; ?>">
                                             </td>

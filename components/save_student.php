@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include_once '../includes/conn.php';
     include_once '../includes/data.php';
 
@@ -11,6 +12,7 @@
         $l_name = $_REQUEST['l_name'];
         $adm_no = $_REQUEST['adm_no'];
         $class = $_REQUEST['class'];
+        $stream = $_REQUEST['stream'];
         $status = $_REQUEST['status'];
 
         $fNameOk = input_length($f_name,2);
@@ -24,7 +26,7 @@
         $validated = $fNameOk+$lNameOk+$mNameOk+$classOk+$statusOk;
         if($validated == 5){
             if($uid>0){
-                $updateString = "f_name='$f_name',m_name='$m_name',l_name='$l_name',adm_no='$adm_no',class='$class',status='$status',added_by='$sid'";
+                $updateString = "f_name='$f_name',m_name='$m_name',l_name='$l_name',adm_no='$adm_no',class='$class',stream='$stream',status='$status',added_by='$sid'";
                 $update = updateDb('l_student',$updateString,"id='$uid'");
                 if($update == 1){
                     $proceed = 1;
@@ -47,8 +49,8 @@
                 }
             }else{
                 $username = $f_name.".".$l_name;
-                $fields = array("f_name","m_name","l_name","adm_no","username","class","status","added_by");
-                $values = array("$f_name","$m_name","$l_name","$adm_no","$username","$class","$status","$sid");
+                $fields = array("f_name","m_name","l_name","adm_no","username","class","stream","status","added_by");
+                $values = array("$f_name","$m_name","$l_name","$adm_no","$username","$class","$stream","$status","$sid");
                 $create = insertDb('l_student',$fields,$values);
                 if($create == 1){
                     $proceed = 1;

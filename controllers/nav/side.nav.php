@@ -113,6 +113,12 @@
                                         <p>Add Student</p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="stream?a=nst" class="nav-link">
+                                        <i class="fas fa-book nav-icon"></i>
+                                        <p>Class Streams</p>
+                                    </a>
+                                </li>
                         <?php
                             }else{}
                             if(permission_check(decurl($_SESSION['maktaba_']),"BOOK_MANAGEMENT","view") && permission_check(decurl($_SESSION['maktaba_']),"BOOK_MANAGEMENT","add")){ ?>

@@ -180,6 +180,8 @@
             case 'set':
                 return "Settings";
                 break;
+            case 'st':
+                return "Class Streams";
             default:
                 return "Maktaba";
                 break;

@@ -31,3 +31,10 @@
             }
         }
     }
+?>
+<script>
+    var proceed = "<?php echo $proceed; ?>";
+    if(proceed=='1'){
+        location.reload();
+    }
+</script>

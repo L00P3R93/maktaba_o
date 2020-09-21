@@ -3,17 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="81c2c69c-4051-470d-bfa0-fea9a2d7e31e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/books.php" beforeDir="false" afterPath="$PROJECT_DIR$/books.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/borrowed.php" beforeDir="false" afterPath="$PROJECT_DIR$/borrowed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/save_staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_staff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/set.student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/set.student.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/borrow.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/borrow.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/return.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/return.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/save_student.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/save_student.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/base/css.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/css.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/base/js.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/base/js.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/nav/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/nav.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/nav/side.nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/nav/side.nav.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/staff.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +93,8 @@
       <workItem from="1600337482293" duration="3572000" />
       <workItem from="1600341419094" duration="10371000" />
       <workItem from="1600405898548" duration="16928000" />
+      <workItem from="1600494767714" duration="5109000" />
+      <workItem from="1600666492322" duration="9929000" />
     </task>
     <servers />
   </component>
@@ -105,21 +106,21 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1599550042593" />
-    <state x="176" y="292" key="NewPhpFileDialog" timestamp="1600416936585">
+    <state x="176" y="292" key="NewPhpFileDialog" timestamp="1600674533302">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="176" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1600416936585" />
+    <state x="176" y="292" key="NewPhpFileDialog/0.0.1366.738@0.0.1366.738" timestamp="1600674533302" />
     <state x="676" y="0" width="697" height="745" key="dock-window-1" timestamp="1599340340605">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="676" y="0" width="697" height="745" key="dock-window-1/0.0.1366.738@0.0.1366.738" timestamp="1599340340605" />
-    <state x="344" y="181" key="run.anything.popup" timestamp="1600409827442">
+    <state x="344" y="181" key="run.anything.popup" timestamp="1600495453235">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="344" y="181" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1600409827442" />
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1600342154886">
+    <state x="344" y="181" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1600495453235" />
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1600668008004">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1600342154886" />
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1600668008004" />
   </component>
 </project>

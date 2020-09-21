@@ -1,11 +1,12 @@
 <?php
     if($_POST){
+        session_start();
         require '../includes/conn.php';
         require '../includes/data.php';
 
         $sid = decurl($_REQUEST['sid']);
         $username = getValue('l_staff',"id='$sid'",'username');
-        $bookid = $_REQUEST['bookid'];
+        $bookid = decurl($_REQUEST['bookid']);
         $studentid = $_REQUEST['studentid'];
         $adm_no = getValue('l_student',"id='$studentid'",'adm_no');
         $title = $_REQUEST['title'];

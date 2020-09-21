@@ -21,6 +21,8 @@
 <script src="assets/plugins/toastr/toastr.min.js"></script>
 <!--Bootbox-->
 <script src="assets/plugins/bootbox/bootbox.all.min.js"></script>
+<!--Pace-->
+<script src="assets/js/pace.min.js"></script>
 
 <!-- overlayScrollbars -->
 <script src="assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
@@ -30,13 +32,33 @@
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+
+
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="assets/js/adminlte.js"></script>
 <script src="assets/js/main.js"></script>
 
 <!-- Page script -->
 <script>
+
     $(function() {
+        $(document).ajaxStart(function() {
+            Pace.restart();
+        }).ajaxStop( function() {
+            Pace.stop();
+        }).ajaxError( function(event, request, settings) {
+            Pace.stop();
+        }).ajaxComplete( function(event, request, settings) {
+            Pace.stop();
+        });
+
         $("#pickup").datepicker({
             dateFormat: "yy-mm-dd"
         });
@@ -51,11 +73,16 @@
         });
         //Initialize Datatables
         $("#example1").DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'excel', 'csv', 'pdf','print'
+            ],
             "responsive": false,
             "autoWidth": true,
             "paging": true,
             "ordering": true,
             "info": true,
+
         });
         $('#example2').DataTable({
             "paging": true,
@@ -176,9 +203,10 @@
             var l_name = $("#l_name").val();
             var adm_no = $("#adm_no").val();
             var _class = $("#class :selected").val();
+            var stream = $("#stream :selected").val();
             var status = $("#stat1 :selected").val();
 
-            var params = "sid="+sid+"&f_name="+f_name+"&m_name="+m_name+"&l_name="+l_name+"&adm_no="+adm_no+"&class="+_class+"&status="+status+"&studid="+studid;
+            var params = "sid="+sid+"&f_name="+f_name+"&m_name="+m_name+"&l_name="+l_name+"&adm_no="+adm_no+"&class="+_class+"&stream="+stream+"&status="+status+"&studid="+studid;
             console.log(params);
             action('components/save_student.php',params);
         });
