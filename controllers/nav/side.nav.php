@@ -77,15 +77,15 @@
                         </p>
                     </a>
                 </li>
-                <!--<li class="nav-item ">
-                    <a href="fines?a=f" class="nav-link <?php echo selected($_GET['a'],"f","active"); ?>">
-                        <i class="nav-icon fas fa-comments-dollar"></i>
+                <li class="nav-item ">
+                    <a href="late?a=la" class="nav-link <?php echo selected($_GET['a'],"la","active"); ?>">
+                        <i class="nav-icon fas fa-exclamation-circle"></i>
                         <p>
-                            Fines
-
+                            Late
+                            <span class="badge badge-info right"><?php echo getCount('l_borrowed',"borrow_status='3'"); ?></span>
                         </p>
                     </a>
-                </li>-->
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>

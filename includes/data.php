@@ -177,6 +177,9 @@
             case 'l':
                 return "Activity Logs";
                 break;
+            case 'la':
+                return "Late Books";
+                break;
             case 'set':
                 return "Settings";
                 break;
@@ -221,16 +224,24 @@
         }
     }
 
-    function getBorrowStatus($status='',$returnDt){
+    function getBorrowStatus($status='',$returnDt,$borid){
         $today= strtotime("now");
         $returnDt = strtotime($returnDt);
         switch($status){
             case "1":
-                if($today>$returnDt){return "<span class=\"badge badge-danger\">Late</span>";}
+                if($today>$returnDt){
+                    $upd = updateDb('l_borrowed',"borrow_status='3'","id='$borid'");
+                    if($upd){
+                        return "<span class=\"badge badge-danger\">Late</span>";
+                    }else{return 0;}
+                }
                 return "<span class=\"badge badge-primary\">Borrowed</span>";
                 break;
             case "2":
                 return "<span class=\"badge badge-success\">Returned</span>";
+                break;
+            case "3":
+                return "<span class=\"badge badge-danger\">Late</span>";
                 break;
             default:
                 return "<span class=\"badge badge-primary\">Borrowed</span>";
@@ -280,6 +291,8 @@
         $r = mysqli_query($con, $q);
         return $r;
     }
+
+
 
     function getTableGrouped($table,$conditions,$orderby,$direction,$groupby,$limit,$cols='*'){
         global $con;

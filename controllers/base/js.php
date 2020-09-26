@@ -14,7 +14,8 @@
 
 <!--InputMask-->
 <script src="assets/plugins/moment/moment.min.js"></script>
-
+<!-- date-range-picker -->
+<script src="assets/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- SweetAlert2 -->
 <script src="assets/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- Toastr -->
@@ -65,12 +66,23 @@
         $("#return").datepicker({
             dateFormat: "yy-mm-dd"
         });
+        //Date range picker
+        $('#reservation').daterangepicker({
+            locale: {
+                format: 'DD/MM/YYYY'
+            }
+        })
         //Initialize Select2 Elements
         $('.select2').select2();
         //Initialize Select2 Elements
         $('.select2bs4').select2({
             theme: 'bootstrap4'
         });
+
+        //Tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+
+
         //Initialize Datatables
         $("#example1").DataTable({
             dom: 'Bfrtip',
@@ -93,6 +105,7 @@
             "autoWidth": false,
             "responsive": true,
         });
+
         //Initial alert Toasts
         const Toast = Swal.mixin({
             toast: true,

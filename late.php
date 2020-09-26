@@ -15,12 +15,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Borrowed Books</h1>
+                        <h1 class="m-0 text-dark">Late Books</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="home?a=d">Home</a></li>
-                            <li class="breadcrumb-item active">Borrowed</li>
+                            <li class="breadcrumb-item"><a href="home">Home</a></li>
+                            <li class="breadcrumb-item active">Late</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -40,6 +40,25 @@
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6 form-inline" data-toggle="tooltip" data-html="true" title="<em>Pick</em> <u>Range of Dates</u> <b>and Submit</b>">
+                                        <!-- Date range -->
+                                        <div class="form-group">
+                                            <label class="sr-only">Date range:</label>
+                                            <div class="input-group  mb-2 mr-sm-2">
+                                                <div class="input-group-prepend">
+                                                      <span class="input-group-text">
+                                                        <i class="far fa-calendar-alt"></i>
+                                                      </span>
+                                                </div>
+                                                <input type="text" class="form-control float-right " id="reservation">
+                                            </div>
+                                            <!-- /.input group -->
+                                        </div>
+                                        <!-- /.form group -->
+                                        <button class="btn btn-primary dtRange  mb-2">Submit</button>
+                                    </div>
+                                </div>
                                 <table id="example1" class="table table-responsive table-bordered table-striped">
                                     <thead>
                                     <tr>
@@ -51,34 +70,22 @@
                                         <th scope="col">Borrow_Date</th>
                                         <th scope="col">Return_Date</th>
                                         <th scope="col">Borrow Status</th>
-                                        <th scope="col">Action</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="setTable">
                                     <?php
                                     $i=1;
-                                    $st = getTable('l_borrowed');
+                                    $st = getTableOrdered('l_borrowed',"borrow_status='3'","id","desc","100000000");
                                     while($sts = mysqli_fetch_object($st)){ ?>
                                         <tr>
                                             <td><?php echo $i; ?></td>
-                                            <td><?php echo getValue("l_books","id='$sts->book_id'",'title'); ?></td>
+                                            <td><a href="#" class="bookView" data-toggle="modal" data-target="#modal-view" value="<?php echo encurl($sts->book_id); ?>"><?php echo getValue("l_books","id='$sts->book_id'",'title'); ?></a></td>
                                             <td><?php echo $sts->books." Book(s)"; ?></td>
-                                            <td><?php echo getValue('l_student',"id='$sts->student_id'",'adm_no'); ?></td>
-                                            <td><?php echo getValue('l_staff', "id='$sts->issued_by'","username"); ?></td>
+                                            <td><a href="#" class="studentView" value="<?php echo encurl($sts->id); ?>" data-toggle="modal" data-target="#modal-view"><?php echo getValue('l_student',"id='$sts->student_id'",'adm_no'); ?></a></td>
+                                            <td><a href="#" class="viewStaff"  data-toggle="modal" data-target="#modal-view" value="<?php echo encurl($sts->issued_by); ?>" ><?php echo getValue('l_staff', "id='$sts->issued_by'","username"); ?></a></td>
                                             <td><?php echo date("d-M-Y", strtotime($sts->borrow_date)); ?></td>
                                             <td><?php echo date("d-M-Y", strtotime($sts->return_date)); ?></td>
                                             <td><?php echo getBorrowStatus($sts->borrow_status,$sts->return_date,$sts->id)?></td>
-                                            <td>
-                                            <?php
-
-                                                    if($sts->borrow_status == 1 || $sts->borrow_status == 3){
-                                                        if (permission_check(decurl($_SESSION['maktaba_']), "BOOK_MANAGEMENT", "edit")) { ?>
-                                                        <button class="btn btn-primary bookReturn" data-toggle="modal" data-target="#modal-return" value="<?php echo encurl($sts->id); ?>">Return</button>
-                                            <?php   }}else{ ?>
-                                                        Returned.
-                                            <?php   } ?>
-                                            </td>
-
                                         </tr>
                                         <?php $i++; } ?>
                                     </tbody>
@@ -92,7 +99,6 @@
                                         <th scope="col">Borrow_Date</th>
                                         <th scope="col">Return_Date</th>
                                         <th scope="col">Borrow Status</th>
-                                        <th scope="col">Action</th>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -108,28 +114,25 @@
             <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-
     </div>
     <!-- /.content-wrapper -->
 
-    <div class="modal fade" id="modal-return">
+    <!-- Modal View -->
+    <div class="modal fade" id="modal-view">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Return Book</h4>
+                    <h4 class="modal-title">Student Profile</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div id="setBorrow" class="row"></div>
+                    <div id="set" class="row"></div>
                     <div class="processing"></div>
-                    <input type="hidden" id="returnId" name="returnId" value="0">
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <div class="feedback"></div>
-                    <button type="button" class="btn btn-primary saveReturn" value="SAVE_RETURN">Save changes</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -142,7 +145,6 @@
     <?php include 'controllers/base/footer.php'; ?>
 </div>
 <!-- ./wrapper -->
-
 <?php include 'controllers/base/js.php'; ?>
 <script>
     function action(actionPage, params, feedbackArea='.feedback', processingArea='.processing', processingMessage='Processing'){
@@ -162,22 +164,31 @@
         });
     }
 
-    $('.bookReturn').click(function(){
-        var borrowId = $(this).val();
-
-        $("#returnId").val(borrowId);
-
-        var params = "id="+borrowId;
-        console.log(params);
-        action('components/return.set.php',params,'#setBorrow','.processing','Loading ...');
+    $('.studentView').click(function(){
+        var studentid = $(this).attr("value");
+        var params = "studid="+studentid;
+        action('components/set.student.php',params,"#set");
     });
-
-    $('.saveReturn').click(function(){
-        var returnId = $("#returnId").val();
-        //console.log(returnId);
-        params = "id="+returnId;
-        action('components/return.php',params);
+    $('.viewStaff').click(function(){
+        var userid = $(this).attr("value");
+        var params = "id="+userid;
+        action('components/set.staff.php',params,"#set");
     });
+    $('.bookView').click(function(e){
+        e.preventDefault();
+        var id = $(this).attr("value");
+        var params = "bookid="+id;
+        action('components/set.book.php',params,"#set");
+        $('.saveBook').hide();
+    });
+    $(".dtRange").click(function(){
+        var dt = $("#reservation").val();
+        var params = "dt="+dt;
+        console.log(dt);
+        action("components/set.table.php",params,"#setTable");
+    })
 </script>
+
 </body>
 </html>
+
